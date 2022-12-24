@@ -1,0 +1,42 @@
+.project-list-toggle
+  padding: 20px 8px
+  border: none
+  border-radius: 2px
+  background: lightsteelblue
+
+  .hamburger
+    display: none
+    position: relative
+    margin-left: 16px
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after
+    width: 30px
+    height: 3px
+    background: #fff
+    $r: 300ms ease-in-out
+    $w: width 200ms linear
+    $l: left 200ms linear
+    transition: transform ($r, $w, $l)
+
+  .hamburger::before,
+  .hamburger::after
+    content: ''
+    position: absolute
+
+  .hamburger::before
+    bottom: 8px
+    left: 2px
+    width: 26px
+  .hamburger::after
+    top: 8px
+    left: 2px
+    width: 26px
+
+body.project-list-open
+  .project-list-toggle .hamburger
+    transform: rotate(90deg)
+    &::before, &::after
+      left: 0px
+      width: 30px

@@ -1,0 +1,325 @@
+.project-list {
+  grid-area: main-left;
+  padding-right: 16px;
+}
+.project-list .project-list-item {
+  margin-bottom: 16px;
+  background: lightblue;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  word-break: break-word;
+  font-weight: 600;
+}
+
+.project-list-header {
+  grid-area: header-left;
+  padding-right: 16px;
+}
+
+.project-view {
+  grid-area: header-right;
+  font-size: 0.9rem;
+}
+.project-view h2 {
+  font-size: 1.5rem;
+  word-break: break-word;
+}
+.project-view .options-wrapper {
+  border-bottom: 1px dashed grey;
+  padding: 16px 0;
+}
+.project-view .options-wrapper .options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-weight: 500;
+}
+.project-view .options-wrapper .rename {
+  display: none;
+  padding-top: 8px;
+  gap: 8px;
+}
+.project-view .options-wrapper .rename input {
+  width: min(100%, 375px);
+}
+.project-view li {
+  display: flex;
+}
+.project-view li button:last-of-type {
+  margin-left: 16px;
+}
+.project-view .add-object-input {
+  background: lightsteelblue;
+}
+
+.todo-list {
+  grid-area: main-right;
+}
+.todo-list li {
+  word-break: break-word;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.todo-list li:not(:last-of-type) {
+  border-bottom: 1px solid grey;
+}
+.todo-list li:hover {
+  background: lightgrey;
+}
+.todo-list li .title {
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+.todo-list li div {
+  display: grid;
+  grid-template-columns: 1fr 5fr 5fr;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.todo-list li div input {
+  justify-self: start;
+}
+.todo-list li div p {
+  margin: 0;
+  justify-self: center;
+}
+.todo-list li div p:last-of-type {
+  justify-self: start;
+}
+
+.todo-detail {
+  box-sizing: border-box;
+  width: min(600px, 95%);
+  max-height: 90%;
+  overflow: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  background: lightsteelblue;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px #272727;
+  cursor: default;
+}
+.todo-detail textarea, .todo-detail input {
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.todo-detail textarea, .todo-detail input[type=text] {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.todo-detail textarea {
+  resize: none;
+}
+.todo-detail #close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2px 8px 8px 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+}
+.todo-detail li {
+  margin-bottom: 16px;
+}
+.todo-detail li#title {
+  border-bottom: 2px solid grey;
+  margin-top: 16px;
+}
+.todo-detail li.flex {
+  display: flex;
+  gap: 8px;
+}
+.todo-detail input[type=text] {
+  padding-bottom: 16px;
+}
+.todo-detail h2 {
+  font-size: 1.2rem;
+}
+.todo-detail label, .todo-detail p {
+  margin: 0;
+  font-size: 1rem;
+}
+.todo-detail label {
+  font-weight: 600;
+}
+
+.project-list-toggle {
+  padding: 20px 8px;
+  border: none;
+  border-radius: 2px;
+  background: lightsteelblue;
+}
+.project-list-toggle .hamburger {
+  display: none;
+  position: relative;
+  margin-left: 16px;
+}
+.project-list-toggle .hamburger,
+.project-list-toggle .hamburger::before,
+.project-list-toggle .hamburger::after {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  transition: transform 300ms ease-in-out, width 200ms linear, left 200ms linear;
+}
+.project-list-toggle .hamburger::before,
+.project-list-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+}
+.project-list-toggle .hamburger::before {
+  bottom: 8px;
+  left: 2px;
+  width: 26px;
+}
+.project-list-toggle .hamburger::after {
+  top: 8px;
+  left: 2px;
+  width: 26px;
+}
+
+body.project-list-open .project-list-toggle .hamburger {
+  transform: rotate(90deg);
+}
+body.project-list-open .project-list-toggle .hamburger::before, body.project-list-open .project-list-toggle .hamburger::after {
+  left: 0px;
+  width: 30px;
+}
+
+body {
+  background: #dedede;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  outline-offset: -2px;
+}
+
+input {
+  max-width: 100%;
+}
+
+button, input[type=checkbox] {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+header {
+  background: lightsteelblue;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+header h1 {
+  margin: 0 0 0 64px;
+  color: #fff;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.no-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.container {
+  max-height: calc(100vh - 48px - 16px);
+  margin: auto;
+  padding: 0 16px 16px 16px;
+  display: grid;
+  max-width: 1200px;
+  column-gap: 10%;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: max-content 1fr;
+  grid-template-areas: "header-left header-right" "main-left main-right";
+}
+.container .project-list, .container .todo-list {
+  overflow: auto;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+body.modal-open .modal {
+  display: block;
+}
+body.modal-open .container > *:not(.modal) {
+  opacity: 0.1;
+}
+
+.add-object-input {
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background: lightgreen;
+  font-weight: 600;
+}
+.add-object-input input {
+  width: calc(90% - 40px);
+}
+.add-object-input p {
+  margin-top: 0;
+}
+.add-object-input span {
+  margin-left: 8px;
+  color: #fff;
+  font-size: 2rem;
+}
+
+@media (max-width: 750px) {
+  .mobile-only {
+    display: block;
+  }
+  .project-list-toggle .hamburger {
+    display: block;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "header-right" "main-right";
+  }
+  .project-list-header, .project-list {
+    display: none;
+  }
+  body.project-list-open .container {
+    grid-template-areas: "header-left" "main-left";
+  }
+  body.project-list-open .project-list-header, body.project-list-open .project-list {
+    display: block;
+  }
+  body.project-list-open .project-view, body.project-list-open .todo-list {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

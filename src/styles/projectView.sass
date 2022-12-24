@@ -1,0 +1,54 @@
+.project-view
+  grid-area: header-right
+  font-size: .9rem
+  h2
+    font-size: 1.5rem
+    word-break: break-word
+  .options-wrapper
+    border-bottom: 1px dashed grey
+    padding: 16px 0
+    .options
+      display: flex
+      flex-wrap: wrap
+      gap: 16px
+      font-weight: 500
+    .rename
+      display: none
+      padding-top: 8px
+      gap: 8px
+      input
+        width: min(100%, 375px)
+  li
+    display: flex
+    button:last-of-type
+      margin-left: 16px
+
+  .add-object-input
+    background: lightsteelblue
+
+.todo-list
+  grid-area: main-right
+  li
+    word-break: break-word
+    padding: 8px 0
+    cursor: pointer
+    &:not(:last-of-type)
+      border-bottom: 1px solid grey
+    &:hover
+      background: lightgrey
+    .title
+      font-weight: 600
+      margin: 0 0 8px 0
+    div
+      display: grid
+      grid-template-columns: 1fr 5fr 5fr
+      gap: 8px
+      font-size: .8rem
+      font-weight: 500
+      input
+        justify-self: start
+      p
+        margin: 0
+        justify-self: center
+        &:last-of-type
+          justify-self: start

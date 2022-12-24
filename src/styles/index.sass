@@ -1,0 +1,111 @@
+@import projectList.sass
+@import projectListHeader.sass
+@import projectView.sass
+@import todoDetail.sass
+@import hamburger.sass
+
+body
+  background: #dedede
+  margin: 0
+  font-family: sans-serif
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+li
+  outline-offset: -2px
+
+input
+  max-width: 100%
+
+button, input[type=checkbox]
+  cursor: pointer
+
+button:disabled
+  cursor: default
+
+header
+  background: lightsteelblue
+  height: 48px
+  display: flex
+  align-items: center // needed for chromium
+  h1
+    margin: 0 0 0 64px
+    color: #fff
+
+.mobile-only
+  display: none
+
+.no-content
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 2rem
+
+.container
+  max-height: calc(100vh - 48px - 16px)
+  margin: auto
+  padding: 0 16px 16px 16px
+  display: grid
+  max-width: 1200px
+  column-gap: 10%
+  grid-template-columns: 300px 1fr
+  grid-template-rows: max-content 1fr
+  grid-template-areas: "header-left header-right" "main-left main-right"
+
+  .project-list, .todo-list
+    overflow: auto
+
+.modal
+  display: none
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  cursor: pointer
+  z-index: 1
+
+body.modal-open
+  .modal
+    display: block
+  .container > *:not(.modal)
+    opacity: .1
+
+.add-object-input
+  margin-bottom: 16px
+  padding: 8px 16px
+  border-radius: 5px
+  background: lightgreen
+  font-weight: 600
+  input
+    width: calc(90% - 40px)
+  p
+    margin-top: 0
+  span
+    margin-left: 8px
+    color: #fff
+    font-size: 2rem
+
+@media(max-width:750px)
+  .mobile-only
+    display: block
+
+  .project-list-toggle .hamburger
+    display: block
+  .container
+    grid-template-columns: 1fr
+    grid-template-areas: "header-right" "main-right"
+  .project-list-header, .project-list
+    display: none
+
+  body.project-list-open
+    .container
+      grid-template-areas: "header-left" "main-left"
+    .project-list-header, .project-list
+      display: block
+    .project-view, .todo-list
+      display: none
