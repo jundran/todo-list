@@ -107,7 +107,7 @@ export default function ProjectView(project) {
       </div>
     `
     const dueField = todoListItem.querySelector('.due')
-    if(dueField.textContent.includes('(Overdue)')) dueField.style.color = 'red'
+    if(dueField.textContent.includes('Overdue')) dueField.style.color = 'red'
 
     setPriorityColour(todoListItem, todo.priority)
     todoListItem.addEventListener('click', handleClick)

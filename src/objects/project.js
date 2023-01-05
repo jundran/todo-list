@@ -52,13 +52,13 @@ export default function Project(title = '') {
 
   function getProjectData() {
     return {
-      title,
+      title: `${title}`,
       todos: todos.map(todo => Object.values(todo).slice(0, 5))
     }
   }
 
   function addOrUpdateProjectInLocalStorage() {
-    localStorage.setItem(title, JSON.stringify(getProjectData()))
+    localStorage.setItem('--todo-project--' + title, JSON.stringify(getProjectData()))
   }
 
   // New project

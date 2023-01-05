@@ -24,19 +24,11 @@ function loadDefaultObjects() {
   })
 }
 
-function populateLocalStorage() {
-  // Used to keep something in local storage even after all
-  // projects deleted in order not to reload default projects
-  localStorage.setItem('hasRunOnce', true)
-  projects.map(project => {
-    const data = project.getProjectData()
-    localStorage.setItem(project.title, JSON.stringify(data))
-  })
-}
-
 function fetchDataFromLocalStorage() {
-  Object.keys(localStorage).forEach(key => {
-    if(key === 'hasRunOnce') return
+  const projectItems = Object.keys(localStorage)
+    .filter(key => key.startsWith('--todo-project--'))
+
+  projectItems.forEach(key => {
     const projectData = JSON.parse(localStorage.getItem(key))
     addProjectToStorage(Project(projectData.title), false)
     projectData.todos.forEach(todo =>
@@ -45,8 +37,16 @@ function fetchDataFromLocalStorage() {
   projects.sort((a,b) => a.title > b.title)
 }
 
-if (localStorage.length) fetchDataFromLocalStorage()
-else {
+if (localStorage.length) {
+  fetchDataFromLocalStorage()
+  if(!projects.length) {
+    const userDeletedAllProjects = localStorage.getItem('--todo-app--return-visitor')
+    if(!userDeletedAllProjects) setUpForFirstRun()
+  }
+}
+else setUpForFirstRun()
+
+function setUpForFirstRun() {
   loadDefaultObjects()
-  populateLocalStorage()
+  localStorage.setItem('--todo-app--return-visitor', true)
 }
